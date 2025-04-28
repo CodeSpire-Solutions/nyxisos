@@ -3,7 +3,7 @@
 NyxisOS is an AOSP Rom that is inspired by GrapheneOS and based on LineageOS. It is oriented on Privacy and a kind of mystery.
 
 ## Contributers
-- Project Admin, Head Developer[Kartoffelspalt](@kartoffelspalt)
+- Project Admin, Head Developer: [Kartoffelspalt](@kartoffelspalt)
 
 ## Copyright
 Copyright (c) CodeSpire-Solutions (and P.B.). All rights reserved.
