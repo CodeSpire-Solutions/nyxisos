@@ -1,50 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BKG4QRN0KP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BKG4QRN0KP');
-</script>
-  <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/c5503a14d221b.js" data-cmp-host="a.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=https://nyxisos.rf.gd/" />
-  <title>Temporary Redirect to new Website.</title>
+    <meta http-equiv="refresh" content="0; url=home.html" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NyxisOS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/images/NyxisOS-Logo-Preview-220525.png">
+
+  <style>
+    /* Define the fade-in keyframes animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Default style for all sections: hidden and with a slight upward shift */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    /* Add fade-in effect once the element is in view */
+    .fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Optional: Add a transition for other interactive elements */
+    .transition-all {
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
 </head>
 <body class="bg-black text-white font-sans">
-  
+
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 fade-in">
     <h1 class="text-6xl md:text-8xl font-bold mb-6 tracking-tight">NyxisOS</h1>
     <p class="text-xl md:text-2xl text-gray-400 mb-8">Into the Deep Night.</p>
-    <a href="#features" class="bg-white text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition">Discover More</a>
+    <a href="#features" class="bg-white text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-300 transition-all">Discover More</a>
   </section>
 
   <!-- Feature Section -->
-  <section id="features" class="bg-gradient-to-b from-black to-gray-900 py-20 px-6">
+  <section id="features" class="bg-gradient-to-b from-black to-gray-900 py-20 px-6 fade-in">
     <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div>
         <h2 class="text-4xl font-bold mb-4">Speed. Darkness. Power.</h2>
         <p class="text-gray-400 text-lg mb-6">
-          NyxisOS redefines performance in a minimalist, fast, and dark environment. Every interaction is crafted for speed and clarity. Its inspired by GrapheneOS, a Android distribution, ensuring a solid foundation for your computing needs and privacy security. 
+          NyxisOS redefines performance in a minimalist, fast, and dark environment. Every interaction is crafted for speed and clarity.
         </p>
-        <a href="https://grapheneos.org/features" class="text-white underline hover:text-gray-300">Learn more about GrapheneOS</a>
+        <a href="#" class="text-white underline hover:text-gray-300">Learn more</a>
       </div>
-      <!--<img src="https://images.unsplash.com/photo-1604079628049-943fd2cb1a2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="NyxisOS Showcase" class="rounded-2xl shadow-2xl"> -->
+      <div></div>
+      <h2 class="text-4xl font-bold mb-4 md:col-span-2">First Previews & Concept Pictures</h2>
+    </div>
+
+    <!-- Phone Showcase with Custom Dots and Swipe -->
+    <div class="mt-20 flex flex-col items-center justify-center space-y-6 fade-in">
+      <!-- Phone Image Display -->
+      <img id="phoneImage" src="/images/frame006.png" alt="NyxisOS UI" class="w-64 md:w-72 object-cover rounded-xl shadow-xl transition-transform duration-500 ease-in-out scale-100 opacity-100" draggable="false">
+
+      <!-- Dot Navigation Dark Style -->
+      <div id="dotControls" class="flex items-center px-4 py-2 bg-gray-800 rounded-full space-x-2">
+        <button class="dot w-6 h-2 bg-white rounded-full transition-all" data-img="/images/frame001.png"></button>
+        <button class="dot w-2 h-2 bg-gray-400 rounded-full transition-all" data-img="/images/frame002.png"></button>
+        <button class="dot w-2 h-2 bg-gray-400 rounded-full transition-all" data-img="/images/frame003.png"></button>
+        <button class="dot w-2 h-2 bg-gray-400 rounded-full transition-all" data-img="/images/frame004.png"></button>
+        <button class="dot w-2 h-2 bg-gray-400 rounded-full transition-all" data-img="/images/frame005.png"></button>
+        <button class="dot w-2 h-2 bg-gray-400 rounded-full transition-all" data-img="/images/frame006.png"></button>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black py-12 text-center text-gray-600 text-sm">
-    © 2025 NyxisOS & CodeSpire-Solutions. All rights reserved.
+  <footer class="bg-black py-12 text-center text-gray-600 text-sm fade-in">
+    © 2025 NyxisOS. All rights reserved.
   </footer>
+
+  <script>
+    // IntersectionObserver to trigger fade-in on scroll
+    const fadeInElements = document.querySelectorAll('.fade-in');
+
+    const observerOptions = {
+      root: null, // default is the viewport
+      rootMargin: '0px',
+      threshold: 0.5, // Element will trigger when 50% is in the viewport
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible'); // Add class to trigger fade-in effect
+          observer.unobserve(entry.target); // Stop observing the element after it enters the view
+        }
+      });
+    }, observerOptions);
+
+    // Observe each fade-in element
+    fadeInElements.forEach(element => {
+      observer.observe(element);
+    });
+
+    const phoneImage = document.getElementById("phoneImage");
+    const dots = document.querySelectorAll("#dotControls .dot");
+    const imageList = Array.from(dots).map(dot => dot.getAttribute("data-img"));
+    let currentIndex = imageList.indexOf(phoneImage.src.split("/").pop().startsWith("http") ? "/images/frame006.png" : phoneImage.src);
+    let isSwiping = false; // Flag to prevent multiple swipes during transition
+
+    function changeImage(nextIndex) {
+      if (nextIndex < 0 || nextIndex >= imageList.length || nextIndex === currentIndex || isSwiping) return;
+
+      // Get the current image and new image elements
+      const currentImg = phoneImage;
+      const newImg = new Image();
+      newImg.src = imageList[nextIndex];
+      newImg.className = "absolute inset-0 object-cover rounded-xl shadow-xl opacity-0 scale-90";
+      
+      const container = phoneImage.parentElement;
+      container.appendChild(newImg);
+
+      // Trigger the animation
+      setTimeout(() => {
+        newImg.classList.add('transition-transform', 'duration-300', 'ease-in-out', 'opacity-100', 'scale-100'); // Faster duration
+        newImg.style.transform = "scale(1)"; // Final scale value
+
+        currentImg.classList.add('transition-transform', 'duration-300', 'ease-in-out'); // Faster duration
+        currentImg.style.transform = "scale(0.95)"; // Shrink the current image as the new one zooms in
+
+        // After transition, replace the image
+        setTimeout(() => {
+          phoneImage.src = newImg.src;
+          phoneImage.style.transform = "scale(1)";
+          container.removeChild(newImg); // Remove the old image from DOM
+          updateDots(nextIndex);
+          currentIndex = nextIndex;
+          isSwiping = false; // Allow new animations after current one completes
+        }, 300); // After transition duration
+      }, 50);
+    }
+
+    function updateDots(activeIndex) {
+      dots.forEach((dot, i) => {
+        dot.classList.remove("w-6", "bg-white");
+        dot.classList.add("w-2", "bg-gray-400");
+        if (i === activeIndex) {
+          dot.classList.remove("w-2", "bg-gray-400");
+          dot.classList.add("w-6", "bg-white");
+        }
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => changeImage(index));
+    });
+
+    // Swipe handling
+    let startX = 0;
+    const swipeThreshold = 40; // Threshold for detecting swipe
+
+    phoneImage.addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX;
+    });
+
+    phoneImage.addEventListener("touchend", e => {
+      const deltaX = e.changedTouches[0].clientX - startX;
+
+      // If swipe distance is large enough, trigger the image change
+      if (deltaX > swipeThreshold) {
+        changeImage(currentIndex - 1); // Swiping left to right
+      } else if (deltaX < -swipeThreshold) {
+        changeImage(currentIndex + 1); // Swiping right to left
+      }
+    });
+  </script>
 
 </body>
 </html>
