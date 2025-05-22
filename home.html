@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/NyxisOS-Logo-Preview-220525.png">
+    <title>NyxisOS - Redefining Android</title>
+    <style>
+        :root {
+            --primary-color: #6e44ff;
+            --secondary-color: #2c2c2e;
+            --background: #000;
+            --text-color: #f5f5f7;
+            --highlight: #86fbfb;
+            --accent-blue: #2997ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .nav {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(20px);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(circle at center, #1a1a1a 0%, var(--background) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(110, 68, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -25%;
+            left: -25%;
+            animation: pulse 8s infinite alternate ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.1); }
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 1;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        .hero p {
+            font-size: 1.7rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--highlight);
+            color: var(--background);
+        }
+        
+        .section {
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .feature {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .gallery-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .gallery-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .gallery-image {
+            height: 400px;
+            margin-bottom: 1rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gallery-text {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .gallery-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .gallery-dot.active {
+            background-color: var(--primary-color);
+        }
+        
+        .parallax {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #121212 0%, var(--secondary-color) 100%);
+            z-index: -1;
+        }
+        
+        .parallax-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .parallax h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .parallax p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .devices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .device {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .device:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .device h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .device p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .download-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .download-button:hover {
+            background-color: var(--highlight);
+            color: var(--background);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                height: 500px;
+            }
+            
+            .gallery-image {
+                height: 300px;
+            }
+            
+            .parallax h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo">NyxisOS</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#security">Security</a>
+            <a href="#downloads">Downloads</a>
+            <a href="#support">Support</a>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <h1>NyxisOS</h1>
+        <p>The perfect fusion of LineageOS stability, GrapheneOS security, and iOS elegance.</p>
+    </section>
+    
+    <section class="section" id="features">
+        <h2 class="section-title">Redefining Android</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>Enhanced Features</h3>
+                <p>With a dynamic pin entering method you can switch between a secured home screen and an open one.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Superior Performance</h3>
+                <p>Optimized system resource management ensures faster app launches, smoother animations, and extended battery life due to LineageOS.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>iOS-Inspired Design</h3>
+                <p>Some features and UI Elements are inspiered by iOS.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="gallery">
+        <h2 class="section-title">Experience NyxisOS</h2>
+        <div class="gallery">
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="/images/frame004.png" alt="NyxisOS Preview" class="gallery-image">
+                    <div class="gallery-text">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/frame005.png" alt="NyxisOS Preview" class="gallery-image">
+                    <div class="gallery-text">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/frame002.png" alt="NyxisOS Preview" class="gallery-image">
+                    <div class="gallery-text">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/frame003.png" alt="NyxisOS Preview" class="gallery-image">
+                    <div class="gallery-text">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/frame001.png" alt="NyxisOS Preview" class="gallery-image">
+                    <div class="gallery-text">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/frame006.png" alt="NyxisOS Preview" class="gallery-image">
+                    <div class="gallery-text">
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-nav">
+                <div class="gallery-dot active" data-index="0"></div>
+                <div class="gallery-dot" data-index="1"></div>
+                <div class="gallery-dot" data-index="2"></div>
+                <div class="gallery-dot" data-index="3"></div>
+                <div class="gallery-dot" data-index="4"></div>
+                <div class="gallery-dot" data-index="5"></div>
+                <div class="gallery-dot" data-index="6"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="parallax" id="security">
+        <div class="parallax-bg"></div>
+        <div class="parallax-content">
+            <h2>Security Redefined</h2>
+            <p>NyxisOS builds upon the robust foundation of LineageOS and implements some features of GrapheneOS. We planned to contain some cool other features.</p>
+            <button href="https://grapheneos.org/" class="cta-button">Learn About Our GrapheneOS</button>
+        </div>
+    </section>
+    
+    <section class="section" id="downloads">
+        <h2 class="section-title">Supported Devices</h2>
+        <div class="devices">
+            <div class="device">
+                <h3>Xiaomi Redmi Series</h3>
+                <p>Redmi 7 (onclite)</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="support">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NyxisOS</h3>
+                <ul>
+                    <li><a href="#gallery">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Downloads</h3>
+                <ul>
+                    <li><a href="#">ROM Snapshots</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://github.com/CodeSpire-Solutions">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Bug Reports</a></li>
+                    <li><a href="mailto:info@kusa-app.rf.gd">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 NyxisOS. All rights reserved. NyxisOS is not affiliated with Google, Apple, or any device manufacturer.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Gallery functionality
+        const galleryContainer = document.querySelector('.gallery-container');
+        const galleryDots = document.querySelectorAll('.gallery-dot');
+        let currentIndex = 0;
+        
+        galleryDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                currentIndex = index;
+                updateGallery();
+            });
+        });
+        
+        function updateGallery() {
+            galleryContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            galleryDots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Auto slide gallery
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % galleryDots.length;
+            updateGallery();
+        }, 5000);
+        
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const parallax = document.querySelector('.parallax-bg');
+            const scrollPos = window.scrollY;
+            parallax.style.transform = `translateY(${scrollPos * 0.3}px)`;
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
